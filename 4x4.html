@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Page</title>
+  <link rel="stylesheet" href="4x4.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__icon">
+      <div class="header__icon-stick"></div>
+      <div class="header__icon-stick"></div>
+      <div class="header__icon-stick"></div>
+    </div>
+    <h1 class="header__title">CodeJam - Palette</h1>
+    <div class="header__dots">
+      <div class="header__dots-dot"></div>
+      <div class="header__dots-dot"></div>
+      <div class="header__dots-dot"></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="menu">
+      <div class="tools">
+        <div class="tools__tool">
+          <img src="./assets/paint-bucket.svg" alt="paint bucket" class="tools_tool-icon">
+          <p class="tools__tool-name">Paint bucket</p>
+        </div>
+        <div class="tools__tool border">
+          <img src="./assets/choose-color.svg" alt="choose color" class="tools_tool-icon">
+          <p class="tools__tool-name">Choose color</p>
+        </div>
+        <div class="tools__tool">
+          <img src="./assets/move.svg" alt="move" class="tools_tool-icon">
+          <p class="tools__tool-name">Move</p>
+        </div>
+        <div class="tools__tool">
+          <img src="./assets/transform.svg" alt="transform" class="tools_tool-icon">
+          <p class="tools__tool-name">Transform</p>
+        </div>
+      </div>
+      <div class="colors">
+        <div class="colors__color">
+          <div class="colors__color-circle current-color"></div>
+          <p class="colors__color-name">Current color</p>
+        </div>
+        <div class="colors__color border">
+          <div class="colors__color-circle prev-color"></div>
+          <p class="colors__color-name">Prev color</p>
+        </div>
+        <div class="colors__color">
+          <div class="colors__color-circle red"></div>
+          <p class="colors__color-name">red</p>
+        </div>
+        <div class="colors__color">
+          <div class="colors__color-circle blue"></div>
+          <p class="colors__color-name">blue</p>
+        </div>
+      </div>
+    </section>
+    <div class="canvas-container">
+      <canvas id="myCanvas"></canvas>
+    </div>
+  </main>
+  <script src="4x4.js"></script>
+</body>
+
+</html>
