@@ -18,3 +18,20 @@ fetch('./4x4.json')
       }
     }
   })
+
+fetch('./32x32.json')
+  .then(response => response.json())
+  .then(data => {
+    const colors = data
+    const squareSize = 16
+    const rows = canvas.height / squareSize
+    const cols = canvas.width / squareSize
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        ctx.fillStyle = `rgba(${colors[row][col]})`
+        ctx.fillRect(col * squareSize, row * squareSize, squareSize, squareSize)
+      }
+    }
+  })
+
