@@ -1,5 +1,6 @@
 const canvas = document.getElementById('myCanvas')
 const ctx = canvas.getContext('2d')
+
 canvas.width = 512
 canvas.height = 512
 
