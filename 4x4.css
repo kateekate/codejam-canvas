@@ -70,6 +70,7 @@
   flex: 1;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .tools_tool-icon {
