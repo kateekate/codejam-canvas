@@ -64,3 +64,40 @@ options.forEach(option => {
   })
 })
 
+
+const pencilTool = document.querySelector('.pencil-tool')
+pencilTool.addEventListener('mousedown', function () {
+  pencilTool.classList.add('tool-selected')
+  const canvas = document.getElementById('myCanvas')
+  const ctx = canvas.getContext('2d')
+
+  let isDrawing = false
+  let lastX = 0
+  let lastY = 0
+
+  canvas.addEventListener('mousedown', function (e) {
+    isDrawing = true
+    lastX = e.offsetX
+    lastY = e.offsetY
+  })
+
+  canvas.addEventListener('mousemove', function (e) {
+    if (isDrawing) {
+      ctx.beginPath()
+      ctx.moveTo(lastX, lastY)
+      ctx.lineTo(e.offsetX, e.offsetY)
+      ctx.stroke()
+
+      lastX = e.offsetX
+      lastY = e.offsetY
+    }
+  })
+
+  canvas.addEventListener('mouseup', function () {
+    isDrawing = false
+  })
+
+  canvas.addEventListener('mouseout', function () {
+    isDrawing = false
+  })
+})
