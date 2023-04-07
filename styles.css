@@ -173,4 +173,9 @@
   height: 20px;
   border: 1px solid #000000;
   margin: 0 20px 0 20px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #000000;
 }
