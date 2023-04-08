@@ -3,7 +3,7 @@ const options = document.querySelectorAll('.switcher__option-square')
 options.forEach(option => {
   option.addEventListener('click', () => {
     options.forEach(option => option.classList.remove('selected'))
-    console.log(option.classList.add('selected'))
+    option.classList.add('selected')
     if (option.classList.contains('size-four') && option.classList.contains('selected')) {
       const canvas = document.getElementById('myCanvas')
       const ctx = canvas.getContext('2d')
@@ -64,7 +64,6 @@ options.forEach(option => {
   })
 })
 
-
 const pencilTool = document.querySelector('.pencil-tool')
 pencilTool.addEventListener('mousedown', function () {
   pencilTool.classList.add('tool-selected')
@@ -101,3 +100,17 @@ pencilTool.addEventListener('mousedown', function () {
     isDrawing = false
   })
 })
+
+const fillTool = document.querySelector('.fill-tool')
+fillTool.addEventListener('mousedown', function () {
+  fillTool.classList.add('tool-selected')
+  const canvas = document.getElementById('myCanvas')
+  const ctx = canvas.getContext('2d')
+
+  ctx.fillStyle = 'red'
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.fill()
+})
+
+
+
