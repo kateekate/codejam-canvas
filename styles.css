@@ -120,6 +120,20 @@
   margin: 0 35px 0 20px;
 }
 
+.colors__color-input-circle {
+  background-color: transparent;
+  width: 30px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 29px 0 17px;
+  cursor: pointer;
+}
+.colors__color-input-circle::-webkit-color-swatch{
+  border-radius: 50%;
+  border: 1.3px solid black;
+}
+
 .prev-color {
   background: #41f795;
 }
@@ -130,10 +144,6 @@
 
 .blue {
   background: #41b6f7;
-}
-
-.current-color {
-  background: #c4c4c4;
 }
 
 #myCanvas {
