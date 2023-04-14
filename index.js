@@ -65,7 +65,7 @@ options.forEach(option => {
 })
 
 const pencilTool = document.querySelector('.pencil-tool')
-pencilTool.addEventListener('mousedown', function () {
+pencilTool.addEventListener('click', function () {
   pencilTool.classList.add('tool-selected')
   const canvas = document.getElementById('myCanvas')
   const ctx = canvas.getContext('2d')
@@ -74,7 +74,7 @@ pencilTool.addEventListener('mousedown', function () {
   let lastX = 0
   let lastY = 0
 
-  canvas.addEventListener('mousedown', function (e) {
+  canvas.addEventListener('click', function (e) {
     const currentColor = document.querySelector('.current-color')
     let colorPick = currentColor.value
     ctx.strokeStyle = colorPick;
@@ -108,7 +108,7 @@ pencilTool.addEventListener('mousedown', function () {
 })
 
 const fillTool = document.querySelector('.fill-tool')
-fillTool.addEventListener('mousedown', function () {
+fillTool.addEventListener('click', function () {
   fillTool.classList.add('tool-selected')
   const canvas = document.getElementById('myCanvas')
   const ctx = canvas.getContext('2d')
@@ -120,6 +120,7 @@ fillTool.addEventListener('mousedown', function () {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.fill()
 })
+
 
 
 const currentColor = document.querySelector('.current-color')
@@ -155,11 +156,38 @@ redColor.addEventListener('click', function (event) {
   updatePrevColor()
   updateCurrentColor('#FF0000')
 })
-
 blueColor.addEventListener('click', function (event) {
   updatePrevColor()
   updateCurrentColor('#41b7f7')
 })
 
+const chooseColor = document.querySelector('.choose-color')
+chooseColor.addEventListener('click', function () {
 
+  chooseColor.classList.add('tool-selected')
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
 
+  canvas.addEventListener('click', function (e) {
+    const rect = canvas.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const pixel = ctx.getImageData(x, y, 1, 1).data
+
+    const color = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`
+
+    function rgbToHex(rgbColor) {
+      const matches = rgbColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
+      const r = parseInt(matches[1])
+      const g = parseInt(matches[2])
+      const b = parseInt(matches[3])
+
+      const hexColor = ((r << 16) | (g << 8) | b).toString(16)
+
+      return "#" + ("000000" + hexColor).slice(-6)
+    }
+    const hexColor = rgbToHex(color)
+    updatePrevColor()
+    updateCurrentColor(hexColor)
+  });
+})
