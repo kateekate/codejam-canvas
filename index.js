@@ -75,12 +75,18 @@ pencilTool.addEventListener('mousedown', function () {
   let lastY = 0
 
   canvas.addEventListener('mousedown', function (e) {
+    const currentColor = document.querySelector('.current-color')
+    let colorPick = currentColor.value
+    ctx.strokeStyle = colorPick;
     isDrawing = true
     lastX = e.offsetX
     lastY = e.offsetY
   })
 
   canvas.addEventListener('mousemove', function (e) {
+    const currentColor = document.querySelector('.current-color')
+    let colorPick = currentColor.value
+    ctx.strokeStyle = colorPick;
     if (isDrawing) {
       ctx.beginPath()
       ctx.moveTo(lastX, lastY)
@@ -107,9 +113,52 @@ fillTool.addEventListener('mousedown', function () {
   const canvas = document.getElementById('myCanvas')
   const ctx = canvas.getContext('2d')
 
-  ctx.fillStyle = 'red'
+  const currentColor = document.querySelector('.current-color')
+  let colorPick = currentColor.value
+
+  ctx.fillStyle = colorPick
   ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.fill()
+})
+
+
+const currentColor = document.querySelector('.current-color')
+let prevColor = document.querySelector('.prev-color')
+const prev = document.querySelector('.prev')
+const redColor = document.querySelector('.red-color')
+const blueColor = document.querySelector('.blue-color')
+
+let currentColorPicker = currentColor.value
+let prevColorPicker = currentColorPicker
+
+function updatePrevColor() {
+  prevColorPicker = currentColorPicker
+  prev.style.background = currentColorPicker
+}
+
+function updateCurrentColor(color) {
+  currentColor.value = color
+  currentColorPicker = color
+}
+
+currentColor.addEventListener('input', function (event) {
+  updatePrevColor()
+  currentColorPicker = event.target.value
+})
+prevColor.addEventListener('click', function (event) {
+  const copyPrevColorPicker = prevColorPicker
+  updatePrevColor()
+  updateCurrentColor(copyPrevColorPicker)
+})
+
+redColor.addEventListener('click', function (event) {
+  updatePrevColor()
+  updateCurrentColor('#FF0000')
+})
+
+blueColor.addEventListener('click', function (event) {
+  updatePrevColor()
+  updateCurrentColor('#41b7f7')
 })
 
 
